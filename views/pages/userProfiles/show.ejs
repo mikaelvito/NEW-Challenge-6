@@ -1,6 +1,6 @@
 <button type="button" onclick="history.back()" class="btn btn-light">
   <i class="bi-arrow-left"></i>
-  Kembali
+  back
 </button>
 
 <h3 class="my-3"><%= pageTitle %></h3>
@@ -9,28 +9,28 @@
   <table class="table table-bordered">
     <tbody>
       <tr>
-        <th scope="row">No. Telp</th>
-        <td>081234567890</td>
+        <th scope="row">Full Name</th>
+        <td><%= userProfile.fullName %></td>
       </tr>
       <tr>
-        <th scope="row">Email</th>
-        <td>info@mitrautama.com</td>
+        <th scope="row">Address</th>
+        <td><%= userProfile.address %></td>
       </tr>
       <tr>
-        <th scope="row">Alamat</th>
-        <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor delectus placeat nesciunt quibusdam. Suscipit quod totam fuga quibusdam! Suscipit ea, nihil pariatur quae possimus ullam quas atque aut veritatis placeat.</td>
+        <th scope="row">phoneNumber</th>
+        <td><%= userProfile.phoneNumber %></td>
       </tr>
       <tr>
-        <th scope="row">Tanggal Bergabung</th>
-        <td>2019/01/22</td>
+        <th scope="row">User Game</th>
+        <td><%= userProfile.userGame.username %></td>
       </tr>
       <tr>
-        <th scope="row">Data Dibuat</th>
-        <td>2019/01/22</td>
+        <th scope="row">Data Created At</th>
+        <td><%= userProfile.createdAt %></td>
       </tr>
       <tr>
-        <th scope="row">Data Diperbarui</th>
-        <td>2019/01/23</td>
+        <th scope="row">Data Updated At</th>
+        <td><%= userProfile.updatedAt %></td>
       </tr>
     </tbody>
   </table>

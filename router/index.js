@@ -143,11 +143,42 @@ router.post("/userProfiles", (req, res) => {
 });
 
 router.get("/userProfiles/:id", (req, res) => {
-  res.render("pages/userProfiles/show", {
-    pageTitle: "Supplier: PT. Mitra Utama",
+  UserProfile.findOne({
+    where: { id: req.params.id },
+    include: ["userGame"],
+  }).then((userProfile) => {
+    res.render("pages/userProfiles/show", {
+      pageTitle: `User: ${userProfile.fullName}`,
+      userProfile,
+    });
   });
 });
 
+router.get("/userProfiles/:id/edit", async (req, res) => {
+  const userProfile = await UserProfile.findOne({
+    where: { id: req.params.id },
+  });
+
+  const userGames = await UserGame.findAll({
+    order: [["username", "ASC"]],
+  });
+
+  res.render("pages/userProfiles/edit", {
+    pageTitle: "Edit Profile",
+    userProfile,
+    userGames,
+  });
+});
+
+router.delete("/userProfiles/:id", (req, res) => {
+  UserProfile.destroy({
+    where: {
+      id: req.params.id,
+    },
+  }).then(() => {
+    res.redirect("back");
+  });
+});
 /** END SUPPLIERS ROUTE */
 
 // router.get("/api/userProfiles", (req, res) => {

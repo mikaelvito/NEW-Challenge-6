@@ -22,8 +22,8 @@
         <tr>
           <th scope="row"><%= index + 1 %></th>
           <td class="w-75"><%= userProfile.fullName %></td>
-          <td><%= userProfile.address %></td>
-          <td><%= userProfile.phoneNumber %></td>
+          <td class="w-50"><%= userProfile.address %></td>
+          <td class="w-50"><%= userProfile.phoneNumber %></td>
           <td class="w-25"><%= userProfile.userGame.username %></td>
           <td>
             <div class="d-flex gap-2 text-nowrap">
@@ -33,9 +33,9 @@
               <a class="btn btn-primary btn-sm" href="/userProfiles/<%= userProfile.id %>/edit" role="button">
                 <i class="bi-pencil-fill"></i> Edit
               </a>
-              <form method="post" action="/products/<%= userProfile.id %>?_method=DELETE">
+              <form method="post" action="/userProfiles/<%= userProfile.id %>?_method=DELETE">
                 <button class="btn btn-danger btn-sm" type="submit">
-                  <i class="bi-trash-fill"></i> Hapus
+                  <i class="bi-trash-fill"></i> Delete
                 </button>
               </form>
             </div>
