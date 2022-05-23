@@ -1,0 +1,33 @@
+<button type="button" onclick="history.back()" class="btn btn-light">
+  <i class="bi-arrow-left"></i>
+  Back
+</button>
+
+<h3 class="my-3"> User Game - <%= userGame.username %></h3>
+
+<div class="table-responsive mt-3">
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th scope="row">Username</th>
+        <td><%= userGame.username %></td>
+      </tr>
+      <tr>
+        <th scope="row">Email</th>
+        <td><%= userGame.email %></td>
+      </tr>
+      <tr>
+        <th scope="row">Password</th>
+        <td><%= userGame.password %></td>
+      </tr>
+      <tr>
+        <th scope="row">Data Dibuat</th>
+        <td><%= userGame.createdAt %></td>
+      </tr>
+      <tr>
+        <th scope="row">Data Diperbarui</th>
+        <td><%= userGame.updatedAt %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
