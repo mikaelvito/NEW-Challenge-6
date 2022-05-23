@@ -107,7 +107,15 @@ router.delete("/userGames/:id", (req, res) => {
 /** START SUPPLIERS ROUTE */
 
 router.get("/userProfiles", (req, res) => {
-  res.render("pages/userProfiles/index", { pageTitle: "Create User Profile" });
+  UserProfile.findAll({
+    order: [["fullName", "ASC"]],
+    include: ["userGame"],
+  }).then((userProfiles) => {
+    res.render("pages/userProfiles/index", {
+      pageTitle: "User Profile",
+      userProfiles,
+    });
+  });
 });
 
 router.get("/userProfiles/create", (req, res) => {
@@ -141,5 +149,14 @@ router.get("/userProfiles/:id", (req, res) => {
 });
 
 /** END SUPPLIERS ROUTE */
+
+// router.get("/api/userProfiles", (req, res) => {
+//   UserProfile.findAll({
+//     order: [["fullName", "ASC"]],
+//     include: ["userGame"],
+//   }).then((userProfiles) => {
+//     res.json(userProfiles);
+//   });
+// });
 
 module.exports = router;

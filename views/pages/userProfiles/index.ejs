@@ -12,74 +12,36 @@
         <th scope="col">#</th>
         <th scope="col">Full Name</th>
         <th scope="col">Address</th>
-        <th scope="col">phoneNumber</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">User Game</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td class="w-75">Mikael Vito</td>
-        <td class="w-50">Jl. Kalibata</td>
-        <td class="w-50">08212323</td>
-        <td>
-          <div class="d-flex gap-2 text-nowrap">
-            <a class="btn btn-success btn-sm" href="/userProfiles/1" role="button">
-              <i class="bi-eye-fill"></i> Detail
-            </a>
-
-            <a class="btn btn-primary btn-sm" href="/userProfiles/1/edit" role="button">
-              <i class="bi-pencil-fill"></i> Edit
-            </a>
-
-            <a class="btn btn-danger btn-sm" role="button">
-              <i class="bi-trash-fill"></i> Hapus
-            </a>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td class="w-75">Raihan Saputra</td>
-        <td class="w-50">Jl. Pancoran</td>
-        <td class="w-50">08124545</td>
-        <td>
-          <div class="d-flex gap-2 text-nowrap">
-            <a class="btn btn-success btn-sm" href="/userProfiles/1" role="button">
-              <i class="bi-eye-fill"></i> Detail
-            </a>
-
-            <a class="btn btn-primary btn-sm" href="/userProfiles/1/edit" role="button">
-              <i class="bi-pencil-fill"></i> Edit
-            </a>
-
-            <a class="btn btn-danger btn-sm" role="button">
-              <i class="bi-trash-fill"></i> Delete
-            </a>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td class="w-75">Putri Safitri</td>
-        <td class="w-50">Jl. Kemang</td>
-        <td class="w-50">08314444</td>
-        <td>
-          <div class="d-flex gap-2 text-nowrap">
-            <a class="btn btn-success btn-sm" href="/userProfiles/1" role="button">
-              <i class="bi-eye-fill"></i> Detail
-            </a>
-
-            <a class="btn btn-primary btn-sm" href="/userProfiles/1/edit" role="button">
-              <i class="bi-pencil-fill"></i> Edit
-            </a>
-
-            <a class="btn btn-danger btn-sm" role="button">
-              <i class="bi-trash-fill"></i> Delete
-            </a>
-          </div>
-        </td>
-      </tr>
+      <% userProfiles.forEach((userProfile, index) => { %>
+        <tr>
+          <th scope="row"><%= index + 1 %></th>
+          <td class="w-75"><%= userProfile.fullName %></td>
+          <td><%= userProfile.address %></td>
+          <td><%= userProfile.phoneNumber %></td>
+          <td class="w-25"><%= userProfile.userGame.username %></td>
+          <td>
+            <div class="d-flex gap-2 text-nowrap">
+              <a class="btn btn-success btn-sm" href="/userProfiles/<%= userProfile.id %>" role="button">
+                <i class="bi-eye-fill"></i> Lihat Detail
+              </a>
+              <a class="btn btn-primary btn-sm" href="/userProfiles/<%= userProfile.id %>/edit" role="button">
+                <i class="bi-pencil-fill"></i> Edit
+              </a>
+              <form method="post" action="/products/<%= userProfile.id %>?_method=DELETE">
+                <button class="btn btn-danger btn-sm" type="submit">
+                  <i class="bi-trash-fill"></i> Hapus
+                </button>
+              </form>
+            </div>
+          </td>
+        </tr>
+      <% }) %>
     </tbody>
   </table>
 </div>
